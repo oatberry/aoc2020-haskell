@@ -1,0 +1,5 @@
+* Advent of Code 2020 à la Haskell
+I threw together a quick haskell project that I'll use for AoC 2021, just day 1 is present here for reference. Maybe I'll fill out the rest someday :)
+** What's this all about then?
+Each day gets its own module, and they get imported into ~Main~ and put into a list, it's pretty sweet.
+There are some utility functions in ~Common~ for some nice things like running the parts of the day with output, fetching a day's input from adventofcode.com directly and caching it, and a couple other things.

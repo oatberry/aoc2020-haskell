@@ -1,0 +1,35 @@
+name:                hs2020
+version:             0.1.0.0
+github:              "oatberry/aoc2020-haskell"
+license:             MIT
+author:              "Thomas Berryhill"
+maintainer:          "thomas@berryhill.me"
+copyright:           "2021 Thomas Berryhill"
+
+extra-source-files:
+- README.org
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/oatberry/aoc2020-haskell#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- req
+- bytestring
+- containers
+
+library:
+  source-dirs: src
+
+executables:
+  hs2020-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - hs2020
