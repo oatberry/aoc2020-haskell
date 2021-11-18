@@ -19,6 +19,7 @@ dependencies:
 - req
 - bytestring
 - containers
+- megaparsec
 
 library:
   source-dirs: src
