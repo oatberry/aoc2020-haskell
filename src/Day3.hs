@@ -1,6 +1,8 @@
 module Day3 (day3) where
 
 import Common
+import Data.Functor ((<&>))
+import Data.List (unfoldr)
 import Data.Vector (Vector, (!), (!?))
 import qualified Data.Vector as V
 
@@ -13,14 +15,10 @@ parseInput = V.fromList . fmap (V.fromList . fmap treeToInt) . lines
     treeToInt '#' = 1
 
 toboggan :: (Int, Int) -> TreeMap -> Int
-toboggan (dx, dy) treeMap = go (0, 0) 0
+toboggan (dx, dy) treeMap = sum $ unfoldr next (0, 0)
   where
-    go (x, y) n = case treeMap !? y of
-      Nothing -> n
-      Just row ->
-        go
-          (x + dx, y + dy)
-          (n + (row ! (x `mod` length row)))
+    -- I'm sorry, I couldn't resist
+    next (x, y) = treeMap !? y <&> \row -> (row ! (x `mod` length row), (x + dx, y + dy))
 
 part1 :: String -> String
 part1 = show . toboggan (3, 1) . parseInput
