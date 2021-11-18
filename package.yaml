@@ -20,6 +20,7 @@ dependencies:
 - bytestring
 - containers
 - megaparsec
+- vector
 
 library:
   source-dirs: src

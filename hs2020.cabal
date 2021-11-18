@@ -27,6 +27,7 @@ library
       Common
       Day1
       Day2
+      Day3
   other-modules:
       Paths_hs2020
   hs-source-dirs:
@@ -37,6 +38,7 @@ library
     , containers
     , megaparsec
     , req
+    , vector
   default-language: Haskell2010
 
 executable hs2020-exe
@@ -53,4 +55,5 @@ executable hs2020-exe
     , hs2020
     , megaparsec
     , req
+    , vector
   default-language: Haskell2010
