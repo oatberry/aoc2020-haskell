@@ -26,6 +26,7 @@ library
   exposed-modules:
       Common
       Day1
+      Day2
   other-modules:
       Paths_hs2020
   hs-source-dirs:

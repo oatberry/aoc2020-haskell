@@ -32,8 +32,8 @@ part2 rawInput =
         guard $ IntSet.member z numSet
         pure $ x * y * z
 
-day1 :: IO ()
-day1 = getAOCInput 1 >>= runParts [part1, part2]
+day1 :: Day
+day1 = Day 1 [part1, part2]
 
 testInput1 =
   "1721\n\

@@ -1,13 +1,12 @@
 module Main (main) where
 
+import Common
 import Day1
+import Day2
 import Text.Printf (printf)
 
-days :: [IO ()]
-days = [day1]
+days :: [Day]
+days = [day1, day2]
 
 main :: IO ()
-main = mapM_ runDay $ zip [1 ..] days
-  where
-    runDay :: (Int, IO ()) -> IO ()
-    runDay (dayNum, day) = printf "Day %d:\n" dayNum >> day
+main = mapM_ runDay days
