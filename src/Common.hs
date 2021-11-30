@@ -36,10 +36,10 @@ simpleParser parser = parser <$> takeRest
 runDay :: Day -> IO ()
 runDay (Day dayNum parser part1 part2) = do
   rawInput <- getAOCInput dayNum
-  case parse (parser <* space <* eof) (show dayNum) rawInput of
+  printf "Day %d:\n" dayNum
+  case parse (parser <* space <* eof) "input" rawInput of
     Left e -> putStrLn $ errorBundlePretty e
     Right input -> do
-      printf "Day %d:\n" dayNum
       printf "  part 1: %s\n" . show . part1 $ input
       printf "  part 2: %s\n" . show . part2 $ input
 
