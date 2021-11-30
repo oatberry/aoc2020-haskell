@@ -5,7 +5,6 @@ module Day2 (day2) where
 import Common
 import Data.Function ((&))
 import Data.Maybe (fromMaybe, isNothing)
-import Data.Void (Void)
 import GHC.Ix (inRange)
 import Text.Megaparsec
 import Text.Megaparsec.Char
@@ -18,10 +17,10 @@ data Policy = Policy
   }
   deriving (Show)
 
-parseInput :: String -> [Policy]
-parseInput = fromMaybe [] . parseMaybe (many parsePolicy)
+parser :: Parser [Policy]
+parser = many parsePolicy
   where
-    parsePolicy :: Parsec Void String Policy
+    parsePolicy :: Parser Policy
     parsePolicy = Policy <$> parseNum <*> parseNum <*> parseChar <*> parsePassword
     parseNum = read <$> (some digitChar <* anySingle)
     parseChar = lowerChar <* string ": "
@@ -35,11 +34,11 @@ part2 Policy {..} = check passMin /= check passMax
   where
     check nth = (password !! (nth - 1)) == passChar
 
-testWith :: (Policy -> Bool) -> String -> String
-testWith isValidPolicy = show . length . filter isValidPolicy . parseInput
+testWith :: (Policy -> Bool) -> [Policy] -> Int
+testWith isValidPolicy = length . filter isValidPolicy
 
 day2 :: Day
-day2 = Day 2 [testWith part1, testWith part2]
+day2 = Day 2 parser (testWith part1) (testWith part2)
 
 testInput =
   "1-3 a: abcde\n\
